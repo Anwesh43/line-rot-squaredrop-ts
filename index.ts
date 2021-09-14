@@ -177,7 +177,7 @@ class LRTSDNode {
     
     getNext(dir : number, cb : Function) : LRTSDNode {
         var curr : LRTSDNode = this.prev 
-        if (dir =- 1) {
+        if (dir == 1) {
             curr = this.next 
         } 
         if (curr) {
