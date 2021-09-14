@@ -206,3 +206,25 @@ class LineRotToSquareDrop {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    lrtsd : LineRotToSquareDrop = new LineRotToSquareDrop()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.lrtsd.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.lrtsd.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.lrtsd.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
