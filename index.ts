@@ -22,7 +22,7 @@ class ScaleUtil {
     }
 
     static divideScale(scale : number, i : number, n : number) : number {
-        return Math.min(1 / n, ScaleUtil.maxScale(scale, i, n))
+        return Math.min(1 / n, ScaleUtil.maxScale(scale, i, n)) * n
     }
 }
 
@@ -43,7 +43,7 @@ class DrawingUtil {
         const sc4 : number = ScaleUtil.divideScale(scale, 3, parts)
         const rSize : number = size * Math.floor(sc1)
         context.save()
-        context.translate(w / 2, h / 2 + (h * 0.5 - size / 2) * sc4)
+        context.translate(w / 2, h / 2 + (h * 0.5 + size / 2) * sc4)
         context.save()
         context.translate(0, h * 0.5 * (1 - sc1) + size * 0.5 * sc3)
         
